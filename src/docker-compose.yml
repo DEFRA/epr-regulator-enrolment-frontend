@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  frontendregulatoraccountenrollment.web:
+    image: ${DOCKER_REGISTRY-}frontendregulatoraccountenrollmentweb
+    build:
+      context: .
+      dockerfile: FrontendRegulatorAccountEnrollment.Web/Dockerfile
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379

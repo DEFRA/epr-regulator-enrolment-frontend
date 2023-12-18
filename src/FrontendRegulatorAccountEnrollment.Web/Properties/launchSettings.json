@@ -1,0 +1,36 @@
+{
+  "profiles": {
+    "FrontendRegulatorAccountEnrollment.Web": {
+        "commandName": "Project",
+        "launchBrowser": true,
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        },
+        "dotnetRunMessages": true,
+        "launchUrl": "https://localhost:7218/regulator-enrolment/",
+        "applicationUrl": "https://localhost:7218;http://localhost:5169"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:18872",
+      "sslPort": 44373
+    }
+  }
+}

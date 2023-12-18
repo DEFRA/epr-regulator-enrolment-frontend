@@ -1,0 +1,6 @@
+variables:
+  azureSubscription: 'AZD-RWD-DEV7'
+  docker.imageName: 'frontendregulatoraccountenrollment'
+  acr.azureContainerRegistryName: 'devrwdinfac1401'
+  acr.repositoryName: 'frontendregulatoraccountenrollment'
+  serviceName: 'devrwdwebwa7414'
