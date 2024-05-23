@@ -3,6 +3,7 @@ using FrontendRegulatorAccountEnrollment.Web.HealthChecks;
 using FrontendRegulatorAccountEnrollment.Web.Middleware;
 
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,6 +60,13 @@ app.UseAuthorization();
 app.MapHealthChecks(
     builder.Configuration.GetValue<string>("HealthCheckPath"),
     HealthCheckOptionBuilder.Build()).AllowAnonymous();
+app.MapHealthChecks("/admin/error", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+{
+    ResultStatusCodes =
+    {
+        [HealthStatus.Healthy] = StatusCodes.Status500InternalServerError
+    }
+}).AllowAnonymous();
 
 app.MapControllerRoute(
     name: "default",

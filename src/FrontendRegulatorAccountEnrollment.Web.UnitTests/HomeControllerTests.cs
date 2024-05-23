@@ -209,16 +209,6 @@ namespace FrontendRegulatorAccountEnrollment.Web.UnitTests
         }
 
         [TestMethod]
-        public void Error_ReturnsViewResult()
-        {
-            // Act
-            var result = _homeController.Error();
-
-            // Assert
-            Assert.IsInstanceOfType(result, typeof(ViewResult));
-        }
-
-        [TestMethod]
         public void InviteUser_WithAbandonedJourney_ReturnsOkResult()
         {
             // Arrange

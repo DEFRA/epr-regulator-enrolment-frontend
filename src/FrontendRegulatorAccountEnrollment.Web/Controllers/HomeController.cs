@@ -102,9 +102,6 @@ namespace FrontendRegulatorAccountEnrollment.Web.Controllers
             return RedirectPermanent($"{_configuration.BaseUrl}?token={inviteToken}");
         }
 
-        [Route("error")]
-        public IActionResult Error() => View("Error");
-
         private bool IsDataValid(string? email, string? b2cUserId, EmailModel? regulatorEmailAllowModel, OrganisationModel? regulatorOrganisationModel)
         {
             if (string.IsNullOrWhiteSpace(email))
