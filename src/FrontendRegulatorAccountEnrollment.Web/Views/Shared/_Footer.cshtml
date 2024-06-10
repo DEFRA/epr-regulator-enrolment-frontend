@@ -1,8 +1,39 @@
+@using FrontendRegulatorAccountEnrollment.Web.Configs
+@using Microsoft.Extensions.Options
+@inject IOptions<FooterOptions> Options
+
 <footer class="govuk-footer fixed-bottom" role="contentinfo">
     <div class="govuk-width-container ">
         <div class="govuk-footer__meta">
             <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-                <svg aria-hidden="true"
+
+				<h2 class="govuk-!-margin-top-3">Get help</h2>
+				<ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-7">
+					<li>Email: <a href="mailto: @this.Options.Value.CustomerServiceEmail">@this.Options.Value.CustomerServiceEmail</a></li>
+					<li>Telephone: @this.Options.Value.CustomerServicePhone</li>
+					<li>Monday to Friday, 8:30am to 4:30pm</li>
+				</ul>
+
+				<h2 class="govuk-visually-hidden"></h2>
+				<ul class="govuk-footer__inline-list">
+					<li class="govuk-footer__inline-list-item">
+						<a class="govuk-footer__link" href="@this.Options.Value.CookiesLink">
+							Cookies
+						</a>
+					</li>
+					<li class="govuk-footer__inline-list-item">
+						<a class="govuk-footer__link" href="@this.Options.Value.PrivacyLink" target="_blank">
+							Privacy
+						</a>
+					</li>
+					<li class="govuk-footer__inline-list-item">
+						<a class="govuk-footer__link" href="@this.Options.Value.AccessibilityLink" target="_blank">
+							Accessability Statement
+						</a>
+					</li>
+				</ul>
+
+				<svg aria-hidden="true"
                      focusable="false"
                      class="govuk-footer__licence-logo"
                      xmlns="http://www.w3.org/2000/svg"
