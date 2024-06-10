@@ -24,9 +24,6 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.AllowedHosts = builder.Configuration.GetValue<string>("ForwardedHeaders:AllowedHosts").Split(";");
 });
 
-builder.Services.Configure<FooterOptions>(
-    builder.Configuration.GetSection(FooterOptions.ConfigSection));
-
 builder.Services.AddHsts(options =>
 {
     options.IncludeSubDomains = true;
