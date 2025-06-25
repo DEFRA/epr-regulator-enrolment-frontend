@@ -27,7 +27,7 @@ RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM defradigital/dotnetcore:dotnet6.0
-COPY --from=build-env dotnet /home/dotnet/FrontendRegulatorAccountEnrollment.Web/out .
+COPY --from=build-env /home/dotnet/FrontendRegulatorAccountEnrollment.Web/out .
 
 # Add internationalisation support
 USER root
