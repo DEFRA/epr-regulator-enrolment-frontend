@@ -6,6 +6,7 @@ ENV ASPNETCORE_URLS=http://*:${PORT}
 EXPOSE ${PORT}
 
 # Copy everything
+USER root
 COPY FrontendRegulatorAccountEnrollment.Web/*.csproj ./FrontendRegulatorAccountEnrollment.Web/
 COPY FrontendRegulatorAccountEnrollment.Core/*.csproj ./FrontendRegulatorAccountEnrollment.Core/
 
@@ -19,6 +20,7 @@ USER dotnet
 ENV NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/internal-ca.crt
 
 # Build and publish a release
+USER root
 COPY FrontendRegulatorAccountEnrollment.Web/. ./FrontendRegulatorAccountEnrollment.Web/.
 COPY FrontendRegulatorAccountEnrollment.Core/. ./FrontendRegulatorAccountEnrollment.Core/.
 WORKDIR /home/dotnet/FrontendRegulatorAccountEnrollment.Web
