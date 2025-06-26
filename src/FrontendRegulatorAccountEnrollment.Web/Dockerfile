@@ -6,8 +6,9 @@ ENV ASPNETCORE_URLS=http://*:${PORT}
 EXPOSE ${PORT}
 
 # Copy everything
-COPY --chown=dotnet FrontendRegulatorAccountEnrollment.Web/*.csproj ./FrontendRegulatorAccountEnrollment.Web/
-COPY --chown=dotnet FrontendRegulatorAccountEnrollment.Core/*.csproj ./FrontendRegulatorAccountEnrollment.Core/
+USER root
+COPY FrontendRegulatorAccountEnrollment.Web/*.csproj ./FrontendRegulatorAccountEnrollment.Web/
+COPY FrontendRegulatorAccountEnrollment.Core/*.csproj ./FrontendRegulatorAccountEnrollment.Core/
 
 # Restore as distinct layers
 RUN dotnet restore "FrontendRegulatorAccountEnrollment.Web/FrontendRegulatorAccountEnrollment.Web.csproj"
@@ -19,15 +20,16 @@ USER dotnet
 ENV NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/internal-ca.crt
 
 # Build and publish a release
-COPY --chown=dotnet FrontendRegulatorAccountEnrollment.Web/. ./FrontendRegulatorAccountEnrollment.Web/.
-COPY --chown=dotnet FrontendRegulatorAccountEnrollment.Core/. ./FrontendRegulatorAccountEnrollment.Core/.
+USER root
+COPY FrontendRegulatorAccountEnrollment.Web/. ./FrontendRegulatorAccountEnrollment.Web/.
+COPY FrontendRegulatorAccountEnrollment.Core/. ./FrontendRegulatorAccountEnrollment.Core/.
 WORKDIR /home/dotnet/FrontendRegulatorAccountEnrollment.Web
 
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM defradigital/dotnetcore:dotnet6.0
-COPY --from=build-env --chown=dotnet /home/dotnet/FrontendRegulatorAccountEnrollment.Web/out .
+COPY --from=build-env /home/dotnet/FrontendRegulatorAccountEnrollment.Web/out .
 
 # Add internationalisation support
 USER root
